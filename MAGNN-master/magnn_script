@@ -1,0 +1,41 @@
+# Access to the folder of zip (common) 
+cd Downloads/ExperimentsECE/Aggregation_Codes/Original_codes
+# Unzip the project in the folder 
+unzip MAGNN-master.zip -d ../Used_codes
+
+cd ../Used_codes/MAGNN-master/
+# Create the virtual environment 
+python3.7 -m venv magnn_env
+source magnn_env/bin/activate
+pip install --upgrade pip
+pip install torch==1.2.0
+pip install dgl==0.3.1
+pip install networkx==2.3
+pip install scikit-learn==0.21.3
+pip install numpy==1.17.2  # This version of numpy incompatible with pandas, need to upgrade or downgrade pandas 
+pip install --upgrade numpy==1.17.3 # OR pip install --upgrade numpy==1.18.5
+pip install scipy==1.3.1
+pip install jupyterlab
+pip install ipykernel
+python3.7 -m ipykernel install --user --name=magnn_env --display-name "Python(magnn)"
+mkdir -p checkpoint data/preprocessed # Asked by authors to create 
+# if not activated, we activate the virtual environment 
+source Downloads/ExperimentsECE/Aggregation_Codes/Used_codes/MAGNN-master/magnn_env/bin/activate
+jupyter lab
+cd ExperimentsECE/Aggregation_Codes/Used_codes/MAGNN-master
+pip install nltk
+# Download the GLOVE word2vec from provided link in README 
+mkdir -p data/wordvec/GloVe
+mv ~/Downloads/glove.6B/* ./data/wordvec/GloVe/
+# Download WordNet for lemmatization of raw datasets 
+python3.7
+import nltk
+nltk.download('wordnet')
+nltk.download('omw-1.4')   # optional but recommended for full lemmatization support
+nltk.download('stopwords')
+# To visualize the embeddings 
+conda activate base # python 3.7 is incompatible with used modules, we use the base environment for visualization 
+pip install matplotlib
+pip install umap-learn
+
+ 
