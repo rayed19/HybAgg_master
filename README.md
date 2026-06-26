@@ -1,4 +1,4 @@
-This repository is combining GNN algorithms for exploiting their complementary strengths. 
+This repository is proposing experiments on combining GNN algorithms for exploiting their complementary strengths, the evaluation is performed on DBLP, IMDB on the node classification task.  
 
 We use the following algorithms into two-stages : 
 Stage 1 : semantic aggregation from heterogeneous graphs, we used 
@@ -6,7 +6,9 @@ MAGNN (Fu et al., 2020), SMCD (Ding et al., 2026)
 Stage 2 : Regularization of the graph topology of the constructed graph over the target node embeddings from Stage 1. 
 We used EGAI (Liu et al., 2021).
 
-We will upload soon the final repository. 
+The requirements are algorithm-dependent. 
+
+!!! We will upload soon the final repository !!!
 
 This work is an accepted short paper (under press) on the ADBIS2026 conference. 
 
