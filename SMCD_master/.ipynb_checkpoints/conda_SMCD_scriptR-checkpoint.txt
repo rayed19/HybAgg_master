@@ -1,0 +1,18 @@
+conda create -p ~/envs/smcd_env python=3.9.21
+conda activate ~/envs/smcd_env
+pip install ipykernel
+python -m ipykernel install --name smcd_env --display-name "SMCD Env" --sys-prefix
+jupyter kernelspec list
+cd SMCD-master-
+pip install -r requirements_cleanedR.txt
+pip install torch==2.3.1+cu121 torchvision==0.18.1+cu121 torchaudio==2.3.1+cu121 -f https://download.pytorch.org/whl/torch_stable.html
+python -m pip install dgl -f https://data.dgl.ai/wheels/torch-2.3/cu121/repo.html # Successfully installed dgl-2.5.0+cu121
+pip install torch-scatter==2.1.2+pt23cu121 \
+            torch-sparse==0.6.18+pt23cu121 \
+            torch-cluster==1.6.3+pt23cu121 \
+            torch-spline-conv==1.2.2+pt23cu121 \
+            torch-geometric==2.6.1 -f https://data.pyg.org/whl/torch-2.3.1+cu121.html
+cd src
+python3.9 main.py imdb --gpu=0
+pip install optuna 
+python3.9 optuna_search.py imdb --gpu=0
