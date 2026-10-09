@@ -1,0 +1,50 @@
+# Access to the folder of zip (common) 
+cd Downloads/ExperimentsECE/Aggregation_Codes/Original_codes
+# Unzip the project in the folder 
+unzip egai-main.zip -d ../Used_codes
+
+# python 3.7.7 is required (specific to 3.7.7 since it is deprecated) 
+############FOR python3.7.7#######################
+sudo apt update
+sudo apt install -y build-essential libssl-dev zlib1g-dev \
+  libbz2-dev libreadline-dev libsqlite3-dev wget curl \
+  llvm libncursesw5-dev xz-utils tk-dev libxml2-dev \
+  libxmlsec1-dev libffi-dev liblzma-dev
+ # Download Python 3.7.7 source code
+ cd /tmp
+wget https://www.python.org/ftp/python/3.7.7/Python-3.7.7.tgz
+tar -xvf Python-3.7.7.tgz
+cd Python-3.7.7
+# Build and install 
+./configure --enable-optimizations
+make -j$(nproc)        # Speeds up compilation using all cores
+sudo make altinstall   # Use altinstall to avoid replacing system Python
+##############END ###############################
+# Get into the project folder 
+cd ../Used_codes/egai-main/
+
+# Create the virtual environment 
+python3.7 -m venv env-egai
+# Activate the environment 
+source env-egai/bin/activate
+# Upgrade pip
+pip install --upgrade pip
+# pip install -r requirements.txt
+# Do it one by one 
+pip install torch==1.5.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+pip install numpy==1.18.4
+pip install scipy==1.4.1
+pip install networkx==2.4
+pip install scikit-learn==0.23.1
+# Need to install Jupyertab on each virtual environment and to create also its kernel configuration in the virtual environment 
+pip install jupyterlab
+pip install ipykernel
+python -m ipykernel install --user --name=env-egai --display-name "Python (egai)"
+# For each time we run the jupyter lab 
+# if not activated, we activate the virtual environment 
+source Downloads/ExperimentsECE/Aggregation_Codes/Used_codes/egai-main/env-egai/bin/activate
+# We launch jupyterlab 
+jupyter lab
+
+
+

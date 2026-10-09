@@ -1,0 +1,40 @@
+# Error 1 : 
+Percent: 0.9 Ratio: 0.1 Seed:42 
+Traceback (most recent call last):
+  File "train_egai.py", line 93, in <module>
+    ratio)
+  File "/home/rihab/Downloads/ExperimentsECE/Aggregation_Codes/Used_codes/egai-main/module_egai.py", line 41, in total_ssl
+    G_remove = G_.copy()
+NameError: name 'G_' is not defined
+# Solution : We added G_ as a parameter in the total_ssl function in train_egai.py and module_egai.py 
+
+# Error 2 : 
+python train_egai.py 
+Percent: 0.9 Ratio: 0.1 Seed:42 
+Traceback (most recent call last):
+  File "train_egai.py", line 93, in <module>
+    ratio) # We added G_ (Rihab AYED) 
+  File "/home/rihab/Downloads/ExperimentsECE/Aggregation_Codes/Used_codes/egai-main/module_egai.py", line 43, in total_ssl
+    adj_mod = nx.to_numpy_array(G_remove)
+NameError: name 'nx' is not defined
+# Solution : We added the import of networkx as nx in the module_egai.py 
+
+# Error 3 : 
+Percent: 0.9 Ratio: 0.1 Seed:42 
+Traceback (most recent call last):
+  File "train_egai.py", line 93, in <module>
+    ratio) # We added G_ (Rihab AYED) 
+  File "/home/rihab/Downloads/ExperimentsECE/Aggregation_Codes/Used_codes/egai-main/module_egai.py", line 45, in total_ssl
+    adj_normalizer = fetch_normalization("NormAdj")
+NameError: name 'fetch_normalization' is not defined
+# Solution : We added the import of fetch_normalization from normalization.py in module_egai.py 
+
+# Error 4 : 
+Percent: 0.9 Ratio: 0.1 Seed:42 
+Traceback (most recent call last):
+  File "train_egai.py", line 93, in <module>
+    ratio) # We added G_ (Rihab AYED) 
+  File "/home/rihab/Downloads/ExperimentsECE/Aggregation_Codes/Used_codes/egai-main/module_egai.py", line 47, in total_ssl
+    adj_mod = sparse_mx_to_torch_sparse_tensor(adj_normalizer(adj_mod))
+NameError: name 'sparse_mx_to_torch_sparse_tensor' is not defined
+# Solution: We added the import of sparse_mx_to_torch_sparse_tensor from utils.py 
