@@ -1,0 +1,22 @@
+bash ~/.defaultsettings/init-profile.sh
+# Create a magnn environment with python3.7 
+conda create -p ./envs/magnn_env python=3.7
+conda activate ./envs/magnn_env
+# Install magnn requirements 
+pip install torch==1.2.0
+pip install pandas==0.25.3 
+pip install dgl==0.3.1
+pip install networkx==2.3
+pip install scikit-learn==0.21.3
+pip install numpy==1.17.2  # This version of numpy incompatible with pandas, need to upgrade or downgrade pandas 
+#pip install --upgrade numpy==1.17.3 # OR pip install --upgrade numpy==1.18.5
+pip install scipy==1.3.1
+# pip install jupyterlab
+python3.7 -m ipykernel install --user --name=magnn_env --display-name "Python(magnn)"
+pip install nltk
+conda activate ./envs/magnn_env
+import nltk
+nltk.download('wordnet')
+nltk.download('omw-1.4')   # optional but recommended for full lemmatization support
+nltk.download('stopwords')
+python3.7 run_IMDB.py --repeat 10 # 10 runs 

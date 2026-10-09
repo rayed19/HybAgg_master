@@ -1,0 +1,4 @@
+*.mat
+*.zip
+wordvec/
+data/wordvec/
